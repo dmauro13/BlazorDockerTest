@@ -1,0 +1,22 @@
+﻿name: Style Check
+
+on: [push]
+
+jobs:
+  style-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1'
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Style Check
+        run: dotnet build /p:ReportAnalyzer=true

@@ -22,28 +22,5 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
 
-# Aggiungi alla fine del Dockerfile
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-
-# Configura il token di accesso per GitHub Container Registry
-ARG TOKEN
-RUN mkdir -p /root/.docker && echo "registry=https://docker.pkg.github.com/" > /root/.docker/config.json
-RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"username\":\"dmauro13\",\"password\":\"$TOKEN\",\"email\":\"your-email@example.com\",\"auth\":\"\"}}}" > /root/.docker/config.json
-
-# Tag e push dell'immagine a GitHub Container Registry
-ARG GITHUB_USERNAME
-ARG REPO_NAME
-ARG TAG
-RUN docker tag BlazorDockerTest docker.pkg.github.com/dmauro13/BlazorDockerTest
-RUN docker push docker.pkg.github.com/dmauro13/BlazorDockerTest
-
-ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
-
-
-
-
-
 # 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
 
