@@ -29,15 +29,21 @@ COPY --from=publish /app/publish .
 
 # Configura il token di accesso per GitHub Container Registry
 ARG TOKEN
-RUN echo "registry=https://docker.pkg.github.com/" > ~/.docker/config.json
-RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"dmauro13\":\"dmauro13\",\"X!X8SKE2a\":\"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\",\"email\":\"your-email@example.com\",\"auth\":\"\"}}}" > ~/.docker/config.json
+RUN echo "registry=https://docker.pkg.github.com/" > /root/.docker/config.json
+RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"username\":\"dmauro13\",\"password\":\"$TOKEN\",\"email\":\"your-email@example.com\",\"auth\":\"\"}}}" > /root/.docker/config.json
 
 # Tag e push dell'immagine a GitHub Container Registry
-ARG USERNAME
+ARG GITHUB_USERNAME
 ARG REPO_NAME
 ARG TAG
-RUN docker tag BlazorDockerTest docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:BlazorDockerTest
-RUN docker push docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:BlazorDockerTest
+RUN docker tag BlazorDockerTest docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:$TAG
+RUN docker push docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:$TAG
+
+ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
+
+
+ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
+
 
 
 
