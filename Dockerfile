@@ -36,8 +36,8 @@ RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"username\":\"dmauro13\",\"pas
 ARG GITHUB_USERNAME
 ARG REPO_NAME
 ARG TAG
-RUN docker tag BlazorDockerTest docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:$TAG
-RUN docker push docker.pkg.github.com/dmauro13/BlazorDockerTest/BlazorDockerTest:$TAG
+RUN docker tag BlazorDockerTest docker.pkg.github.com/dmauro13/BlazorDockerTest
+RUN docker push docker.pkg.github.com/dmauro13/BlazorDockerTest
 
 ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
 
