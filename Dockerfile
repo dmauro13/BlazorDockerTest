@@ -30,7 +30,7 @@ COPY --from=publish /app/publish .
 # Configura il token di accesso per GitHub Container Registry
 ARG GITHUB_TOKEN
 RUN echo "registry=https://docker.pkg.github.com/" > ~/.docker/config.json
-RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"username\":\"username\",\"password\":\"$GITHUB_TOKEN\",\"email\":\"your-email@example.com\",\"auth\":\"\"}}}" > ~/.docker/config.json
+RUN echo "{\"auths\":{\"docker.pkg.github.com\":{\"dmauro13\":\"dmauro13\",\"password\":\"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\",\"email\":\"your-email@example.com\",\"auth\":\"\"}}}" > ~/.docker/config.json
 
 # Tag e push dell'immagine a GitHub Container Registry
 ARG GITHUB_USERNAME
@@ -43,5 +43,5 @@ ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
 
 
 
---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
+# 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
 
