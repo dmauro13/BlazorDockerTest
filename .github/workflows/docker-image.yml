@@ -16,5 +16,5 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t ghcr.io/dmauro13/blazordockertest:${{ github.event.release.tag_name }} .
+        docker build -t ghcr.io/dmauro13/blazordockertest:latest .
         docker push ghcr.io/dmauro13/blazordockertest:${{ github.event.release.tag_name }}
