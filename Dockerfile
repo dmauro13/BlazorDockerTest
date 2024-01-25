@@ -21,6 +21,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BlazorDockerTest.dll"]
-
-# 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
-
