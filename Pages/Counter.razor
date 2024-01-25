@@ -8,11 +8,7 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
+<button class="btn btn-primary" @onclick="ShowString">CLICK</button>
+<p role="status">@textToShow</p>
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}
+
